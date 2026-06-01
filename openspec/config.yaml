@@ -1,0 +1,43 @@
+schema: spec-driven
+
+# Project context (optional)
+# This is shown to AI when creating artifacts.
+# Add your tech stack, conventions, style guides, domain knowledge, etc.
+# Example:
+#   context: |
+#     Tech stack: TypeScript, React, Node.js
+#     We use conventional commits
+#     Domain: e-commerce platform
+context: |
+  Project: lumen
+  Product thesis: lumen is a non-commercial side project that converts long documents into grounded, agent-planned reading experiences. It is not a plain PDF-to-HTML converter or generic summarizer.
+
+  Product constraints:
+  - Optimize for a small, memorable, portfolio-quality MVP rather than broad platform scope.
+  - The product should demonstrate agentic product thinking: document profiling, reading experience planning, source-grounded synthesis, and quality evaluation.
+  - The generated experience should feel like an interactive Reading Atlas: structured, theme-aware, citation-backed, and visually intentional.
+  - MVP should prioritize PDF input first. EPUB, MOBI, collaboration, accounts, sharing, and generic chat are non-goals unless explicitly proposed later.
+
+  Architecture constraints:
+  - Do not let the LLM generate arbitrary executable HTML, JavaScript, or React code for browser execution.
+  - The recommended path is PDF -> parsed document model -> semantic model -> Reading Experience Spec/PageSpec -> validated React renderer.
+  - Agent/LLM work should run server-side. Browser code should upload, display progress, render validated specs, and request refinements.
+  - All meaningful claims, quotes, concepts, evidence, and inferred interpretations should be grounded to page/chunk citations where possible.
+
+  Preferred initial stack:
+  - Next.js, React, TypeScript
+  - Tailwind CSS for styling
+  - Server-side document parsing
+  - LLM API with structured outputs
+  - JSON schema validation for Reading Experience Specs
+  - Local filesystem or SQLite is acceptable for early MVP persistence
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
